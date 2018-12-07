@@ -25,7 +25,7 @@ class TransportAPI extends CI_Model
 		 *	TYPE:			Function																											*
 		 *	DESCRIPTION: 	Implements transportAPI /uk/places.json endpoint.																	*
 		 *																																		*
-		 *	INPUTS:			type (string)																										*
+		 *	INPUTS:			type (string) (required)																										*
 		 *						A type or comma separated set of types to limit the search results to. The default is to match on all types. 	*
 		 *						The set of possible match types are currently as follows:														*
 		 *							-	train_station																							*
@@ -86,9 +86,68 @@ class TransportAPI extends CI_Model
 		 *																																		*
 		 ****************************************************************************************************************************************/			
 		 
-		 $url = "http://transportapi.com/v3/uk/places.json?app_key=$this->app_key&app_id=$this->app_id";
-		 echo $url;
-		 die();
+		//Specify Base URL for API Call, Along With app_id and app_key
+		$url = "http://transportapi.com/v3/uk/places.json?app_key=$this->app_key&app_id=$this->app_id";
+
+		//Check to see if each of the inputs exists, if so urlencode and append to base URL
+		
+		if($type != null)
+		{
+			$type = urlencode($type);
+			$url .= "&type=$type";
+		}
+		else
+		{
+			//The type input is required, so we'll return false for now and figure someway of logging this wasn't provided in future
+			return false;
+		}
+		
+		if($lat != null)
+		{
+			$lat = urlencode($lat);
+			$url .= "&lat=$lat";
+		}
+		
+		if($lon != null)
+		{
+			$lon = urlencode($lon);
+			$url .= "&lon=$lon";
+		}
+		
+		if($max_lat != null)
+		{
+			$max_lat = url_encode($max_lat);
+			$url .= "&max_lat=$max_lat";
+		}
+		
+		if($max_lon != null)
+		{
+			$max_lon = urlencode($max_lon);
+			$url .= "&max_lon=$max_lon";
+		}
+		
+		if($min_lat != null)
+		{
+			$min_lat = urlencode($min_lat);
+			$url .= "&min_lat=$min_lat";
+		}
+		
+		if($min_lon != null)
+		{
+			$min_lon = urldecode($min_lon);
+			$url .= "&min_lon=$min_lon";
+		}
+		
+		if($query != null)
+		{
+			$query = urlencode($query);
+			$url .= "&query=$query";
+		}
+		
+		//output URL
+		
+		echo $url;
+		die();
 	}
 }
 
