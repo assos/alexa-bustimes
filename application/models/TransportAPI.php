@@ -2,13 +2,13 @@
 
 /****************************************************************************
  *																			*
- *	NAME:				transportAPI_model									*
+ *	NAME:				transportAPI										*
  *	TYPE:				Class												*
  *	DESCRIPTION:		Implementation of https://www.transportapi.com/		*
  *	ORIGINAL AUTHOR:	Daniel McGiff										*
  *	CONTRIBUTORS:															*
  *	DATE CREATED:		6th December 2018									*
- *	DATE MODIFIED:		6th December 2018									*
+ *	DATE MODIFIED:		7th December 2018									*
  *																			*
  ****************************************************************************/
  
