@@ -12,6 +12,7 @@
 	},
 	"require": {
 		"php": ">=5.3.7"
+		"nategood/httpful": "*"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
