@@ -18,7 +18,7 @@ use Monolog\Handler\StreamHandler;
 class LoggerModel extends CI_Model
 {
 
-	function addEntry($logger,$severity)
+	function addEntry($entry,$severity)
 	{
 	
 		/********************************************************************************
