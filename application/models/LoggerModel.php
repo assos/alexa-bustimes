@@ -18,7 +18,7 @@ use Monolog\Handler\StreamHandler;
 class LoggerModel extends CI_Model
 {
 
-	function addEntry($entry,$severity)
+	function addEntry($logger,$entry,$severity)
 	{
 	
 		/********************************************************************************
@@ -91,6 +91,6 @@ class LoggerModel extends CI_Model
 	{
 		$logger = new Logger('alexaRequest');
 		$logger->pushHandler(new StreamHandler(FCPATH . 'application/logs/alexaRequest.log',LOGGER::DEBUG));
-		$this->addEntry($logger,$severity);
+		$this->addEntry($logger,$entry,$severity);
 	}
 }
