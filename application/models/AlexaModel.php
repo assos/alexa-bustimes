@@ -16,15 +16,28 @@ class AlexaModel extends CI_Model
 {
 	public function securityCheck()
 	{
-		$raw_input_str = $this->input->raw_input_stream;
-		$arr_input_str = print_r($this->input->input_stream(),true);
+		$inputArr = json_decode($this->input->raw_input_stream);
+		
+		$applicationID = $inputArr->session->application->applicationId;
 		
 		$this->load->model('LoggerModel');
 		
-		$this->LoggerModel->alexaRequestEntry($_POST['request'],'DEBUG');
-		$this->LoggerModel->alexaRequestEntry(file_get_contents('php://input'),'DEBUG');
-		$this->LoggerModel->alexaRequestEntry(json_decode($raw_input_str),'DEBUG');
-		$this->LoggerModel->alexaRequestEntry($arr_input_str,'DEBUG');
+		$this->LoggerModel->alexaRequestEntry(print_r($inputArr->request,TRUE),'DEBUG');
+		$this->LoggerModel->alexaRequestEntry('Application ID: ' . $applicationID,'DEBUG')
+
+		swtich($applicationID)
+		{
+			default:
+			
+				header ('Content-Type: application/json');
+				$responseArr = array();
+				$responseArr['version'] = '1.0';
+				$responseArr['response'] = array();
+				$responseArr['response']['outputSpeech'] = array()
+				$responseArr['response'['outputSpeech']['type'] = 'PlainText';
+				$responseArr['response']['outputSpeech']['text'] = 'Hello world!';
+				echo json_encode($responseArr, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+		}
 		
 	}
 }
