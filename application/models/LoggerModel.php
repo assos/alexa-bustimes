@@ -90,7 +90,7 @@ class LoggerModel extends CI_Model
 	public function alexaRequestEntry($entry,$severity)
 	{
 		$logger = new Logger('alexaRequest');
-		$logger->pushHandler(new StreamHandler(FCPATH . '/alexaRequest.log',LOGGER::DEBUG));
-		addEntry($logger,$severity);
+		$logger->pushHandler(new StreamHandler(FCPATH . 'application/logs/alexaRequest.log',LOGGER::DEBUG));
+		$this->addEntry($logger,$severity);
 	}
 }
