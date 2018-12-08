@@ -21,6 +21,6 @@ class AlexaController extends CI_Controller {
 	public function index()
 	{
 		$this->load->model('AlexaModel');
-		$this->model->Alexa->securityCheck();
+		$this->AlexaModel->securityCheck();
 	}
 }
