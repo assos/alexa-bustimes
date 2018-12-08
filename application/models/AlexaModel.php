@@ -33,7 +33,7 @@ class AlexaModel extends CI_Model
 				$responseArr = array();
 				$responseArr['version'] = '1.0';
 				$responseArr['response'] = array();
-				$responseArr['response']['outputSpeech'] = array()
+				$responseArr['response']['outputSpeech'] = array();
 				$responseArr['response'['outputSpeech']['type'] = 'PlainText';
 				$responseArr['response']['outputSpeech']['text'] = 'Hello world!';
 				echo json_encode($responseArr, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
