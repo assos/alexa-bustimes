@@ -25,7 +25,7 @@ class AlexaModel extends CI_Model
 		$this->LoggerModel->alexaRequestEntry(print_r($inputArr->request,TRUE),'DEBUG');
 		$this->LoggerModel->alexaRequestEntry('Application ID: ' . $applicationID,'DEBUG')
 
-		swtich($applicationID)
+		switch($applicationID)
 		{
 			default:
 			
