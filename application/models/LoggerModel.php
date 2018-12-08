@@ -12,11 +12,11 @@
  *																				*
  ********************************************************************************/
  
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
 class LoggerModel extends CI_Model
 {
-
-	use MonologLogger;
-	use MonologHandlerStreamHandler;
 
 	function addEntry($logger,$severity)
 	{
