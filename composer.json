@@ -11,8 +11,8 @@
 		"source": "https://github.com/bcit-ci/CodeIgniter"
 	},
 	"require": {
-		"php": ">=5.3.7"
-		"nategood/httpful": "*"
+		"php": ">=5.3.7",
+		"nategood/httpful": "*",
 		"monolog/monolog": "*"
 	},
 	"suggest": {
