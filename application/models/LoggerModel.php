@@ -79,7 +79,7 @@ class LoggerModel extends CI_Model
 				
 			break;
 			
-			case "EMERGENCY"
+			case "EMERGENCY":
 			
 				$logger->addAlert($entry);
 				
