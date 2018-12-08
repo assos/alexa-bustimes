@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Alexa extends CI_Controller {
+class BusStopsController extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,7 +20,7 @@ class Alexa extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->model('Alexa');
-		$this->model->Alexa->securityCheck();
+		$this->load->model('transportAPI');
+		$this->transportAPI->placesJSON('bus_stop');
 	}
 }

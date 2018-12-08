@@ -1,6 +1,6 @@
 <?php
 
-class busStops_model extends CI_Model
+class BusStopModel extends CI_Model
 {
 	public function fetchNearbyStops()
 	{

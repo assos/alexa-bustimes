@@ -2,7 +2,7 @@
 
 /****************************************************************************
  *																			*
- *	NAME:				transportAPI										*
+ *	NAME:				transportAPIModel									*
  *	TYPE:				Class												*
  *	DESCRIPTION:		Implementation of https://www.transportapi.com/		*
  *	ORIGINAL AUTHOR:	Daniel McGiff										*
@@ -12,7 +12,7 @@
  *																			*
  ****************************************************************************/
  
-class TransportAPI extends CI_Model
+class TransportAPIModel extends CI_Model
 {
 	public $app_id = '4afb0307';
 	public $app_key = '43a5d60aabe4d13f753eb9fed9b898f6';
