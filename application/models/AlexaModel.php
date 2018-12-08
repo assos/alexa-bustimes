@@ -22,7 +22,9 @@ class AlexaModel extends CI_Model
 		$this->load->model('LoggerModel');
 		
 		$this->LoggerModel->alexaRequestEntry($_POST['request'],'DEBUG');
-		$this->LoggerModel->alexaRequestEntry($_SERVER['REQUEST_METHOD'],'DEBUG');
+		$this->LoggerModel->alexaRequestEntry(file_get_contents('php://input'),'DEBUG');
+		$this->LoggerModel->alexaRequestEntry(json_decode($raw_input_str),'DEBUG');
+		$this->LoggerModel->alexaRequestEntry($arr_input_str,'DEBUG');
 		
 	}
 }
