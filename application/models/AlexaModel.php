@@ -121,21 +121,14 @@ class AlexaModel extends CI_Model
 		
 		if($securityFailed)
 		{
-		
-			case "amzn1.ask.skill.18bfabef-4265-4b8e-a666-1b588a0077d6":
-			
-			break;
-			
-			default:
-			
-				header ('Content-Type: application/json');
-				$responseArr = array();
-				$responseArr['version'] = '1.0';
-				$responseArr['response'] = array();
-				$responseArr['response']['outputSpeech'] = array();
-				$responseArr['response']['outputSpeech']['type'] = 'PlainText';
-				$responseArr['response']['outputSpeech']['text'] = 'Hmm... Do I know you?';
-				echo json_encode($responseArr, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+			header ('Content-Type: application/json');
+			$responseArr = array();
+			$responseArr['version'] = '1.0';
+			$responseArr['response'] = array();
+			$responseArr['response']['outputSpeech'] = array();
+			$responseArr['response']['outputSpeech']['type'] = 'PlainText';
+			$responseArr['response']['outputSpeech']['text'] = 'Hmm... Do I know you?';
+			echo json_encode($responseArr, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 		}
 		else
 		{
