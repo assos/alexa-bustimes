@@ -132,6 +132,8 @@ class AlexaModel extends CI_Model
 	}
 	public function speak($textToSpeak)
 	{
+		$this->load->model('LoggerModel');
+
 		header ('Content-Type: application/json');
 		$responseArr = array();
 		$responseArr['version'] = '1.0';
@@ -139,7 +141,10 @@ class AlexaModel extends CI_Model
 		$responseArr['response']['outputSpeech'] = array();
 		$responseArr['response']['outputSpeech']['type'] = 'PlainText';
 		$responseArr['response']['outputSpeech']['text'] = $textToSpeak;
-		echo json_encode($responseArr, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+		$responseToOutput = json_encode($responseArr, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+		
+		echo $responseToOutput;
+		$this->LoggerModel->alexaResponseEntry($responseToOutput,'DEBUG');
 		die();
 	}
 	public function fetchDeviceAddress($inputArr)
