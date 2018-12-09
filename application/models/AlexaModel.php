@@ -129,12 +129,25 @@ class AlexaModel extends CI_Model
 			$responseArr['response']['outputSpeech']['type'] = 'PlainText';
 			$responseArr['response']['outputSpeech']['text'] = 'Hmm... Do I know you?';
 			echo json_encode($responseArr, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+			die();
 		}
 		else
 		{
 			$this->LoggerModel->alexaRequestEntry('Security Checks Passed','INFO');
-			return true;
+			return $inputArr;
 		}
 		
+	}
+	public function fetchDeviceAddress($inputArr)
+	{
+		$deviceID = $inputArr->context->System->device->deviceId;
+		$apiToken = $inputArr->context->System->apiAccessToken;
+
+		$response = \Httpful\Request::get("https://api.amazonalexa.com/v1/devices/$deviceID/settings/address")
+			->addHeader('Authorization', 'Bearer ' . $apiToken)
+			->send();
+		
+		$this->LoggerModel->alexaRequestEntry(print_r($response->body,TRUE),'DEBUG');
+
 	}
 }
