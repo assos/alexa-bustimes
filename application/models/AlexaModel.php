@@ -156,7 +156,7 @@ class AlexaModel extends CI_Model
 			->addHeader('Authorization', 'Bearer ' . $apiToken)
 			->send();
 		
-		$this->LoggerModel->alexaRequestEntry(print_r($response,TRUE),'DEBUG');
+		$this->LoggerModel->alexaRequestEntry(print_r($response->body,TRUE),'DEBUG');
 
 	}
 }
