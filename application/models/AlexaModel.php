@@ -49,7 +49,7 @@ class AlexaModel extends CI_Model
 		$ssl_check = openssl_verify( $jsonRequest, base64_decode($_SERVER['HTTP_SIGNATURE']), $pem, 'sha1' );
 		if ($ssl_check != 1) 
 		{
-			$this->Logger->Model->alexaRequestEntry('Certificate Verification Failed: ' . openssl_error_string(),'NOTICE');
+			$this->LoggerModel->alexaRequestEntry('Certificate Verification Failed: ' . openssl_error_string(),'NOTICE');
 			return false;
     	}
 
@@ -57,7 +57,7 @@ class AlexaModel extends CI_Model
     	$parsedCertificate = openssl_x509_parse($pem);
     	if (!$parsedCertificate) 
     	{
-			$this->Logger->Model->alexaRequestEntry('Certificate Verification Failed: x509 Parsing Failure','NOTICE');
+			$this->LoggerModel->alexaRequestEntry('Certificate Verification Failed: x509 Parsing Failure','NOTICE');
 			return false;
     	}
 
@@ -65,7 +65,7 @@ class AlexaModel extends CI_Model
     	// the Subject Alternative Names (SANs) section of the signing certificate
     	if(strpos( $parsedCertificate['extensions']['subjectAltName'],$echoServiceDomain) === false) 
     	{
-			$this->Logger->Model->alexaRequestEntry('Certificate Verification Failed: subjectAltName Check Failed','NOTICE');
+			$this->LoggerModel->alexaRequestEntry('Certificate Verification Failed: subjectAltName Check Failed','NOTICE');
 			return false;
     	}
 
@@ -77,7 +77,7 @@ class AlexaModel extends CI_Model
 		
 		if (!($validFrom <= $time && $time <= $validTo)) 
 		{
-			$this->Logger->Model->alexaRequestEntry('Certificate Verification Failed: Expiration Check Failed','NOTICE');
+			$this->LoggerModel->alexaRequestEntry('Certificate Verification Failed: Expiration Check Failed','NOTICE');
 			return false;
     	}
 
@@ -103,14 +103,14 @@ class AlexaModel extends CI_Model
 		if($skillID != $applicationID)
 		{
 			$securityFailed = true;
-			$this->Logger->Model->alexaRequestEntry('Invalid application ID. Passed ' . $applicationID . ' expecting ' . $skillID,'NOTICE');
+			$this->LoggerModel->alexaRequestEntry('Invalid application ID. Passed ' . $applicationID . ' expecting ' . $skillID,'NOTICE');
 		}
 
 		//Second Security Check - Is the timestamp valid?
 		if($requestTimestamp <= date('Y-m-d\TH:i:s\Z', time()-150))
 		{
 			$securityFailed = true;
-			$this->Logger->Model->alexaRequestEntry('Invalid request timestamp' . $requestTimestamp,'NOTICE');
+			$this->LoggerModel->alexaRequestEntry('Invalid request timestamp' . $requestTimestamp,'NOTICE');
 		}
 		
 		//Third Security Check - Is the Certificate Valid?
@@ -132,7 +132,7 @@ class AlexaModel extends CI_Model
 		}
 		else
 		{
-			$this->Logger->Model->alexaRequestEntry('Security Checks Passed','INFO');
+			$this->LoggerModel->alexaRequestEntry('Security Checks Passed','INFO');
 			return true;
 		}
 		
