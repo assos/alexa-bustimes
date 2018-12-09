@@ -121,15 +121,7 @@ class AlexaModel extends CI_Model
 		
 		if($securityFailed)
 		{
-			header ('Content-Type: application/json');
-			$responseArr = array();
-			$responseArr['version'] = '1.0';
-			$responseArr['response'] = array();
-			$responseArr['response']['outputSpeech'] = array();
-			$responseArr['response']['outputSpeech']['type'] = 'PlainText';
-			$responseArr['response']['outputSpeech']['text'] = 'Hmm... Do I know you?';
-			echo json_encode($responseArr, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-			die();
+			$this->speak("Hmmm... Do I know you");
 		}
 		else
 		{
@@ -137,6 +129,18 @@ class AlexaModel extends CI_Model
 			return $inputArr;
 		}
 		
+	}
+	public function speak($textToSpeak)
+	{
+		header ('Content-Type: application/json');
+		$responseArr = array();
+		$responseArr['version'] = '1.0';
+		$responseArr['response'] = array();
+		$responseArr['response']['outputSpeech'] = array();
+		$responseArr['response']['outputSpeech']['type'] = 'PlainText';
+		$responseArr['response']['outputSpeech']['text'] = $textToSpeak;
+		echo json_encode($responseArr, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+		die();
 	}
 	public function fetchDeviceAddress($inputArr)
 	{
@@ -157,6 +161,7 @@ class AlexaModel extends CI_Model
 			->send();
 		
 		$this->LoggerModel->alexaRequestEntry(print_r($response->body,TRUE),'DEBUG');
-
+		
+		return $response->body;
 	}
 }
