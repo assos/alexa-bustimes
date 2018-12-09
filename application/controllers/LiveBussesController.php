@@ -26,7 +26,7 @@ class LiveBussesController extends CI_Controller {
 		//here we route the different request types out to their own functions
 		switch($alexaRequest->request->type)
 		{
-			case: "LaunchRequest":
+			case "LaunchRequest":
 				$this->AlexaModel->speak("Welcome to Live Busses");
 			break;
 			
