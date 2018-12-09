@@ -140,6 +140,8 @@ class AlexaModel extends CI_Model
 	}
 	public function fetchDeviceAddress($inputArr)
 	{
+		$this->load->model('LoggerModel');
+
 		$deviceID = $inputArr->context->System->device->deviceId;
 		$apiToken = $inputArr->context->System->apiAccessToken;
 
