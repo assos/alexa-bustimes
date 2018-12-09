@@ -21,6 +21,6 @@ class AlexaController extends CI_Controller {
 	public function index()
 	{
 		$this->load->model('AlexaModel');
-		$this->AlexaModel->securityCheck();
+		$this->AlexaModel->securityCheck('amzn1.ask.skill.18bfabef-4265-4b8e-a666-1b588a0077d6');
 	}
 }
