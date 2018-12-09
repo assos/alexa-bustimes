@@ -18,7 +18,7 @@ class LiveBussesController extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function LaunchSkill()
+	public function index()
 	{
 		$this->load->model('AlexaModel');
 		$alexaRequest = $this->AlexaModel->securityCheck('amzn1.ask.skill.18bfabef-4265-4b8e-a666-1b588a0077d6');
