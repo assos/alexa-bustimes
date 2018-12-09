@@ -145,6 +145,9 @@ class AlexaModel extends CI_Model
 		$deviceID = $inputArr->context->System->device->deviceId;
 		$apiToken = $inputArr->context->System->apiAccessToken;
 
+		$this->LoggerModel->alexaRequestEntry('Device ID: ' . $deviceID,'DEBUG');
+		$this->LoggerModel->alexaRequestEntry('API Token: ' . $apiToken,'DEBUG');
+
 		$response = \Httpful\Request::get("https://api.amazonalexa.com/v1/devices/$deviceID/settings/address")
 			->addHeader('Authorization', 'Bearer ' . $apiToken)
 			->send();
