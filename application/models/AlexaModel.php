@@ -130,7 +130,7 @@ class AlexaModel extends CI_Model
 		}
 		
 	}
-	public function speak($textToSpeak)
+	public function speak($textToSpeak,$endSession = true)
 	{
 		$this->load->model('LoggerModel');
 
@@ -141,6 +141,7 @@ class AlexaModel extends CI_Model
 		$responseArr['response']['outputSpeech'] = array();
 		$responseArr['response']['outputSpeech']['type'] = 'PlainText';
 		$responseArr['response']['outputSpeech']['text'] = $textToSpeak;
+		$responseArr['response']['shouldEndSession'] = $endSession;
 		$responseToOutput = json_encode($responseArr, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 		
 		echo $responseToOutput;
