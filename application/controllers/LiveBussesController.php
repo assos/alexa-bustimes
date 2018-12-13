@@ -27,7 +27,7 @@ class LiveBussesController extends CI_Controller {
 		switch($alexaRequest->request->type)
 		{
 			case "LaunchRequest":
-				$this->AlexaModel->speak("Welcome to Live Busses, To Get Started Say Setup a Bus Stop");
+				$this->AlexaModel->speak("Welcome to Live Busses, To Get Started Say Setup a Bus Stop",false);
 			break;
 			
 			case "IntentRequest":
@@ -55,6 +55,6 @@ class LiveBussesController extends CI_Controller {
 	public function chooseBusStop($alexaRequest)
 	{
 		$this->load->model('AlexaModel');
-		$this->AlexaModel->speak("This is being spoken by the choose bustop function",false);
+		$this->AlexaModel->speak("This is being spoken by the choose bustop function");
 	}
 }
