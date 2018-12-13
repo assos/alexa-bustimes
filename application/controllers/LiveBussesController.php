@@ -27,13 +27,34 @@ class LiveBussesController extends CI_Controller {
 		switch($alexaRequest->request->type)
 		{
 			case "LaunchRequest":
-				$this->AlexaModel->speak("Welcome to Live Busses");
+				$this->AlexaModel->speak("Welcome to Live Busses, To Get Started Say Setup a Bus Stop");
 			break;
+			
+			case "IntentRequest":
+				
+				switch($alexaRequest->request->intent->name)
+				{
+				
+					case "Choose_BusStop":
+					
+						$this->chooseBusStop($alexaRequest);
+					
+					break;
+					
+					default:
+					
+						$this->AlexaModel->speak("I'm sorry, I can't help with that yet...");
+				}
 			
 			default:
 			
 				$this->AlexaModel->speak("I'm sorry, I can't help with that yet...");
 		}
 		$deviceAddress = $this->AlexaModel->fetchDeviceAddress($alexaRequest);		
+	}
+	public function chooseBusStop($alexaRequest)
+	{
+		$this->load->model('AlexaModel');
+		$this->AlexaModel->speak("This is being spoken by the choose bustop function");
 	}
 }
