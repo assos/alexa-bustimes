@@ -96,6 +96,7 @@ class AlexaModel extends CI_Model
 		$this->load->model('LoggerModel');
 		
 		$this->LoggerModel->alexaRequestEntry(print_r($inputArr->request,TRUE),'DEBUG');
+		$this->LoggerModel->alexaRequestEntry(print_r($inputArr->session->user,TRUE),'DEBUG');
 		$this->LoggerModel->alexaRequestEntry('Application ID: ' . $applicationID,'DEBUG');
 		$this->LoggerModel->alexaRequestEntry('Request Certificate URL: ' . $signatureCertChainURL,'DEBUG');
 
