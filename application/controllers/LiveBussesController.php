@@ -53,7 +53,7 @@ class LiveBussesController extends CI_Controller {
 		$deviceAddress = $this->AlexaModel->fetchDeviceAddress($alexaRequest);		
 	}
 	
-	public function isNewUser($alexaRequest);
+	public function isNewUser($alexaRequest)
 	{
 		$userID = $alexaRequest->session->user->userID;
 		
