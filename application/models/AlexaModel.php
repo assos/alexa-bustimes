@@ -92,8 +92,6 @@ class AlexaModel extends CI_Model
 		$applicationID = $inputArr->session->application->applicationId;
 		$requestTimestamp = $inputArr->request->timestamp;
 		$signatureCertChainURL = $_SERVER['HTTP_SIGNATURECERTCHAINURL'];
-
-		$this->load->model('LoggerModel');
 		
 		$this->LoggerModel->alexaRequestEntry(print_r($inputArr->request,TRUE),'DEBUG');
 		$this->LoggerModel->alexaRequestEntry(print_r($inputArr->session->user,TRUE),'DEBUG');
@@ -133,8 +131,6 @@ class AlexaModel extends CI_Model
 	}
 	public function speak($textToSpeak,$endSession = true)
 	{
-		$this->load->model('LoggerModel');
-
 		header ('Content-Type: application/json');
 		$responseArr = array();
 		$responseArr['version'] = '1.0';
@@ -154,8 +150,6 @@ class AlexaModel extends CI_Model
 	}
 	public function fetchDeviceAddress($inputArr)
 	{
-		$this->load->model('LoggerModel');
-
 		$deviceID = $inputArr->context->System->device->deviceId;
 		$apiToken = $inputArr->context->System->apiAccessToken;
 

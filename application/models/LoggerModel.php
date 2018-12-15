@@ -100,4 +100,11 @@ class LoggerModel extends CI_Model
 		$logger->pushHandler(new StreamHandler(FCPATH . 'application/logs/alexaResponse.log',LOGGER::DEBUG));
 		$this->addEntry($logger,$entry,$severity);
 	}
+	
+	public function dbEntry($entry,$severity)
+	{
+		$logger = new Logger('db');
+		$logger->pushHandler(new StreamHandler(FCPATH . 'application/logs/db.log',LOGGER::DEBUG));
+		$this->addEntry($logger,$entry,$severity);
+	}
 }
