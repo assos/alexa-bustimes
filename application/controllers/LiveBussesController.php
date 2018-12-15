@@ -48,7 +48,7 @@ class LiveBussesController extends CI_Controller {
 			
 			default:
 			
-				$this->AlexaModel->speak("I'm sorry, I can't help with that yet...");
+				$this->AlexaModel->speak("I'm sorry, You should be here...");
 		}
 		$deviceAddress = $this->AlexaModel->fetchDeviceAddress($alexaRequest);		
 	}
