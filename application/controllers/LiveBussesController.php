@@ -27,7 +27,7 @@ class LiveBussesController extends CI_Controller {
 		switch($alexaRequest->request->type)
 		{
 			case "LaunchRequest":
-				$this->AlexaModel->speak("Welcome to Live Busses, To Get Started Say Setup a Bus Stop",false);
+				$this->isNewUser($alexaRequest);
 			break;
 			
 			case "IntentRequest":
@@ -52,9 +52,27 @@ class LiveBussesController extends CI_Controller {
 		}
 		$deviceAddress = $this->AlexaModel->fetchDeviceAddress($alexaRequest);		
 	}
+	
+	public function isNewUser($alexaRequest);
+	{
+		$userID = $alexaRequest->session->user->userID;
+		
+		$query = $this->db->query("SELECT * FROM user_stops WHERE userID == $userID");
+		
+		if($query->num_rows() > 0)
+		{
+			$this->AlexaModel->speak("Welcome to Live Busses, Fetching Your Bus Times Now...",false);
+		}
+		else
+		{
+			$this->AlexaModel->speak("Welcome to Live Busses, Let's Get Started",false);
+		}
+	}
+	
 	public function chooseBusStop($alexaRequest)
 	{
 		$this->load->model('AlexaModel');
 		$this->AlexaModel->speak("This is being spoken by the choose bustop function");
 	}
+	
 }
