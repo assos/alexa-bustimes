@@ -141,7 +141,10 @@ class AlexaModel extends CI_Model
 		$responseArr['response']['outputSpeech'] = array();
 		$responseArr['response']['outputSpeech']['type'] = 'PlainText';
 		$responseArr['response']['outputSpeech']['text'] = $textToSpeak;
-		$responseArr['response']['shouldEndSession'] = $endSession;
+		if($endSession != true)
+		{
+			$responseArr['response']['shouldEndSession'] = $endSession;
+		}
 		$responseToOutput = json_encode($responseArr, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 		
 		echo $responseToOutput;
