@@ -57,7 +57,7 @@ class LiveBussesController extends CI_Controller {
 	{
 		$userID = $alexaRequest->session->user->userId;
 		
-		$query = $this->db->query("SELECT * FROM user_stops WHERE userID == $userID");
+		$query = $this->db->query("SELECT * FROM 'user_stops' WHERE 'userID' == '$userID'");
 		
 		if($query->num_rows() > 0)
 		{
