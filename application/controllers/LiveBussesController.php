@@ -20,7 +20,6 @@ class LiveBussesController extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->model('AlexaModel');
 		$alexaRequest = $this->AlexaModel->securityCheck('amzn1.ask.skill.18bfabef-4265-4b8e-a666-1b588a0077d6');
 
 		//here we route the different request types out to their own functions
@@ -65,7 +64,7 @@ class LiveBussesController extends CI_Controller {
 		}
 		else
 		{
-			$this->AlexaModel->speak("Welcome to Live Busses, We Need To Setup Your Favourite Bus Stops. Do You Know The Name of The Bus Stop You Want To Add?",false);
+			$this->AlexaModel->speak("Welcome to Live Busses, We Need To Setup Your Favourite Bus Stops. To Start Say 'Add Bus Stop'",false);
 		}
 	}
 	
