@@ -158,7 +158,7 @@ class AlexaModel extends CI_Model
 		$responseArr['header'] = array();
 		$responseArr['header']['requestId'] = $requestID;
 		$responseArr['directive'] = array();
-		$responseArr['directive']['type'] = "VoicePlayer.Speak"
+		$responseArr['directive']['type'] = "VoicePlayer.Speak";
 		$responseArr['directive']['speech'] = $textToSpeak;
 		
 		$responseJson = json_encode($responseArr);
