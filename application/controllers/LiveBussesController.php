@@ -27,7 +27,7 @@ class LiveBussesController extends CI_Controller {
 		switch($alexaRequest->request->type)
 		{
 			case "LaunchRequest":
-				$this->AlexaModel->progressiveResponse('Welcome to Live Busses, One Moment Please.');
+				$this->AlexaModel->progressiveResponse('Welcome to Live Busses, One Moment Please.',$alexaRequest);
 				$this->isNewUser($alexaRequest);
 			break;
 			
@@ -62,7 +62,7 @@ class LiveBussesController extends CI_Controller {
 		
 		if($query->num_rows() > 0)
 		{
-			$this->AlexaModel-progressiveResponse('Fetching Your Bus Times Now...');
+			$this->AlexaModel-progressiveResponse('Fetching Your Bus Times Now....',$alexaRequest);
 		}
 		else
 		{
