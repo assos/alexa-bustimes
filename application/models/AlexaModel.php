@@ -148,6 +148,28 @@ class AlexaModel extends CI_Model
 		$this->LoggerModel->alexaResponseEntry($responseToOutput,'DEBUG');
 		die();
 	}
+	public function progressiveResponse($textToSpeak,$alexaRequest)
+	{
+		$apiToken = $alexaRequest->context->System->apiAccessToken;
+		$requestID = $alexaRequest->request->requestId;
+		$apiEndPoint = $alexaRequest->context->System->apiEndpoint;
+		
+		$responseArr = array();
+		$responseArr['header'] = array();
+		$responseArr['header']['requestId'] = $requestID;
+		$responseArr['directive'] = array();
+		$responseArr['directive']['type'] = "VoicePlayer.Speak"
+		$responseArr['directive']['speech'] = $textToSpeak;
+		
+		$responseJson = json_encode($responseArr);
+		$url = $apiEndPoint . '/v1/directives';
+		
+		$response = \Httpful\Request::post($url)
+			->sendsJson()
+			->addHeader('Authorization', 'Bearer ' . $apiToken)
+			->body($responseJson)
+			->send();
+	}
 	public function fetchDeviceAddress($inputArr)
 	{
 		$deviceID = $inputArr->context->System->device->deviceId;
