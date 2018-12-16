@@ -62,7 +62,7 @@ class LiveBussesController extends CI_Controller {
 		
 		if($query->num_rows() > 0)
 		{
-			$this->AlexaModel-progressiveResponse('Fetching Your Bus Times Now...')
+			$this->AlexaModel-progressiveResponse('Fetching Your Bus Times Now...');
 		}
 		else
 		{
