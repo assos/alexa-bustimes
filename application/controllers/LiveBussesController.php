@@ -42,19 +42,20 @@ class LiveBussesController extends CI_Controller {
 			
 					case "AMAZON.YesIntent":
 					
-						$this->AlexaModel->speak("This confirms successful handling of a Yes Intent",false);
+						$this->AlexaModel->speak("This confirms successful handling of a Yes Intent","Yes",false);
+						$this
 					
 					break;
 					
 					case "AMAZON.NoIntent":
 					
-						$this->AlexaModel->speak("This confirms successful handling of a No Intent",false);
+						$this->AlexaModel->speak("This confirms successful handling of a No Intent","No",false);
 					
 					break;
 					
 					case "halDaisyIntent":
 					
-						$this->AlexaModel->speak("It's called \"Daisy\". Dai-sy, dai-sy, give me your answer, do. I'm half cra-zy, all for the love of you. It won't be a sty-lish mar-riage, I can't a-fford a car-riage---. But you'll look sweet upon the seat of a bicycle - built - for - two.");
+						$this->AlexaModel->speak("It's called \"Daisy\". Dai-sy, dai-sy, give me your answer, do. I'm half cra-zy, all for the love of you. It won't be a sty-lish mar-riage, I can't a-fford a car-riage---. But you'll look sweet upon the seat of a bicycle - built - for - two.","halDaisy");
 					
 					break;
 					
@@ -84,7 +85,7 @@ class LiveBussesController extends CI_Controller {
 		}
 		else
 		{
-			$this->AlexaModel->speak("Welcome to Live Busses, We Need To Setup Your Favourite Bus Stops. To Start Say 'Add Bus Stop'",false);
+			$this->AlexaModel->speak("Welcome to Live Busses, We Need To Setup Your Favourite Bus Stops. To Start Say 'Add Bus Stop'","isNewUser",false);
 		}
 	}
 	public function readListEnquiry($alexaRequest)

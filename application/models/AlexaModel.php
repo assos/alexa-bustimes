@@ -129,7 +129,7 @@ class AlexaModel extends CI_Model
 		}
 		
 	}
-	public function speak($textToSpeak,$endSession = true)
+	public function speak($textToSpeak,$intent,$endSession = true)
 	{
 		header ('Content-Type: application/json');
 		$responseArr = array();
@@ -142,6 +142,9 @@ class AlexaModel extends CI_Model
 		{
 			$responseArr['response']['shouldEndSession'] = $endSession;
 		}
+		$responseArr['sessionAttributes'] = array();
+		$responseArr['sessionAttributes']['lastIntent'] = $intent;
+		
 		$responseToOutput = json_encode($responseArr, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 		
 		echo $responseToOutput;
