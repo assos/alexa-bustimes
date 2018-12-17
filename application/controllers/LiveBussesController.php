@@ -48,7 +48,7 @@ class LiveBussesController extends CI_Controller {
 					
 					case "AMAZON.NoIntent":
 					
-						$this->AlexaModel->speak("This confirms successful handling of a Yes Intent",false);
+						$this->AlexaModel->speak("This confirms successful handling of a No Intent",false);
 					
 					break;
 					
